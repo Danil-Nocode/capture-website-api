@@ -84,7 +84,7 @@ async function takePlainPuppeteerScreenshot(url, options) {
         await page.goto(url);
         await setViewport(page, options);
         await new Promise(r => setTimeout(r, options.wait_before_screenshot_ms));
-        buffer = await page.screenshot();
+        buffer = await page.screenshot({ fullPage: options.fullPage === true });
     } finally {
         await browser.close();
     }
